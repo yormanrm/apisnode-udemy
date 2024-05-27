@@ -1,15 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/user-controller");
-const authMiddleware = require("../middleware/auth-middleware");
+// Middlewares
+const auth = require("../middleware/auth-middleware");
+const exist_email = require("../middleware/exist-email-middleware");
 
-router.get("/test", authMiddleware.auth, controller.test);
+router.get("/test", auth.middleware, controller.test);
 router.post("/register", controller.register);
 router.post("/login", controller.login);
-router.get("/profile-data", authMiddleware.auth, controller.profile_data);
-router.get("/list", authMiddleware.auth, controller.users_list);
-router.put("/update/profiledata", authMiddleware.auth, controller.update_profiledata);
-router.put("/update/email", authMiddleware.auth, controller.update_email);
-router.put("/update/password", authMiddleware.auth, controller.update_password);
+router.get("/profile-data", auth.middleware, controller.profile_data);
+router.get("/list", auth.middleware, controller.users_list);
+router.put("/update/profiledata", auth.middleware, controller.update_profiledata);
+router.put("/update/email", auth.middleware, exist_email.middleware, controller.update_email);
+router.put("/update/password", auth.middleware, controller.update_password);
 
 module.exports = router

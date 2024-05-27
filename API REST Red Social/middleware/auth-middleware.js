@@ -1,8 +1,7 @@
-const moment = require("moment");
 const Response = require("../classes/response-class");
 const jwtService = require("../services/jwt-service");
 
-exports.auth = async (req, res, next) => {
+exports.middleware = async (req, res, next) => {
     if (!req.headers.authorization) {
         return res.status(403).json(
             new Response(403, "The user does not have the necessary permissions to execute this action", null)

@@ -123,19 +123,19 @@ const users_list = (req, res) => {
 
 }
 
-const update_profiledata = async (req, res) => {
+const update_profiledata = (req, res) => {
     return res.status(200).json(
         new Response(200, "OK", req.user)
     );
 }
 
-const update_password = async (req, res) => {
+const update_password = (req, res) => {
     return res.status(200).json(
         new Response(200, "OK", req.user)
     );
 }
 
-const update_email = async (req, res) => {
+const update_email = (req, res) => {
     return res.status(200).json(
         new Response(200, "OK", req.user)
     );
